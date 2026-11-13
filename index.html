@@ -3,44 +3,90 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hybrid Battery Monitor – Privacy Policy</title>
+<title>Hybrid Battery Monitor</title>
+<meta name="description" content="Free Android app that reads the hybrid battery of a 2004–2009 Toyota Prius block by block through a BLE OBD2 adapter. Read-only, no internet, no ads.">
+<link rel="icon" href="favicon.png">
 <style>
-  body { font: 16px/1.55 -apple-system, system-ui, sans-serif; max-width: 720px; margin: 0 auto; padding: 24px 16px; color: #1b1f23; background: #fff; }
-  h1 { font-size: 24px; } h2 { font-size: 18px; margin-top: 28px; }
-  .muted { color: #5a6570; font-size: 14px; }
+  :root { --bg:#ffffff; --fg:#1b1f23; --muted:#5a6570; --card:#f4f6f8; --line:#e2e6ea; --accent:#1f7a4d; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#111417; --fg:#e8ecef; --muted:#9aa5ae; --card:#1a1f24; --line:#2a3138; --accent:#4cc38a; } }
+  * { box-sizing: border-box; }
+  body { margin:0; font:16px/1.55 -apple-system, system-ui, "Segoe UI", Roboto, sans-serif; color:var(--fg); background:var(--bg); }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 16px; }
+  header { padding: 48px 0 24px; display:flex; gap:20px; align-items:center; }
+  header img { width:80px; height:80px; border-radius:18px; flex:none; }
+  h1 { font-size: 32px; line-height:1.15; margin:0 0 6px; }
+  .lead { color:var(--muted); margin:0; font-size:18px; }
+  .badge { display:inline-block; margin-top:14px; padding:10px 16px; border-radius:10px; background:var(--card); border:1px solid var(--line); color:var(--muted); font-size:14px; }
+  .shots { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:12px; margin: 24px 0 8px; }
+  .shots img { width:100%; height:auto; border-radius:14px; border:1px solid var(--line); display:block; }
+  h2 { font-size: 22px; margin: 40px 0 12px; }
+  .grid { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:14px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px; }
+  .card h3 { margin:0 0 6px; font-size:17px; }
+  .card p { margin:0; color:var(--muted); font-size:15px; }
+  ol li, ul li { margin: 4px 0; }
+  .note { color:var(--muted); font-size:14px; }
+  footer { margin: 48px 0 32px; padding-top:16px; border-top:1px solid var(--line); color:var(--muted); font-size:14px; display:flex; flex-wrap:wrap; gap:8px 20px; }
+  a { color: var(--accent); }
+  @media (max-width: 720px) {
+    header { padding-top: 28px; }
+    h1 { font-size: 26px; }
+    .shots { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .grid { grid-template-columns: minmax(0,1fr); }
+  }
 </style>
 </head>
 <body>
-<h1>Hybrid Battery Monitor – Privacy Policy</h1>
-<p class="muted">Last updated: 13 November 2026</p>
+<div class="wrap">
+<header>
+  <img src="img/icon.png" alt="">
+  <div>
+    <h1>Hybrid Battery Monitor</h1>
+    <p class="lead">Check the hybrid battery of your 2004–2009 Toyota Prius block by block, with a cheap Bluetooth OBD2 adapter and your Android phone.</p>
+    <span class="badge">Coming soon to Google Play · free, no ads</span>
+  </div>
+</header>
 
-<h2>Summary</h2>
-<p>Hybrid Battery Monitor does not collect, store on a server, sell or share any personal data. The app has no internet access: it does not request the Android INTERNET permission, so it cannot send data anywhere.</p>
+<div class="shots">
+  <img src="img/1_hybrid_battery.webp" alt="Live block voltages of the hybrid battery" loading="lazy">
+  <img src="img/2_block_analysis.webp" alt="Internal resistance per block" loading="lazy">
+  <img src="img/4_trip.webp" alt="Trip overview" loading="lazy">
+  <img src="img/6_report.webp" alt="Trip report" loading="lazy">
+</div>
 
-<h2>What the app does</h2>
-<p>The app connects via Bluetooth Low Energy to an OBD2 adapter (for example a Veepeak OBDCheck BLE) in your car and reads diagnostic values from the car (hybrid battery block voltages, temperatures, engine data, fault codes). It only reads; it never writes to the car or clears fault codes.</p>
+<h2>What you see</h2>
+<div class="grid">
+  <div class="card"><h3>All 14 blocks</h3><p>Live voltage of every battery block and the spread between the highest and lowest, at rest and under load.</p></div>
+  <div class="card"><h3>Resistance per block</h3><p>Internal resistance calculated over the whole trip, so a weakening block stands out early.</p></div>
+  <div class="card"><h3>Trends</h3><p>Compare trips over weeks and months: spread, resistance, allowed power, inverter temperature and fuel use.</p></div>
+  <div class="card"><h3>Battery health</h3><p>State of charge, current, temperatures, allowed charge and discharge power, and a cooling check.</p></div>
+  <div class="card"><h3>Engine</h3><p>Fuel trims, coolant, catalytic converter check, readiness monitors and fault codes.</p></div>
+  <div class="card"><h3>Trip report</h3><p>Distance, estimated fuel use, share driven electric and why the engine was running.</p></div>
+</div>
 
-<h2>Data stored on your phone</h2>
-<p>Trip recordings (CSV files), trip reports and the Bluetooth address of the paired adapter are stored only in the app's own storage on your phone. They stay on your device. You can delete them at any time by clearing the app's storage or uninstalling the app.</p>
+<h2>How it works</h2>
+<ol>
+  <li>Plug a BLE OBD2 adapter into the port under the steering wheel (tested with Veepeak OBDCheck BLE).</li>
+  <li>Pair it once in the app.</li>
+  <li>Drive. When the car goes to READY, the app starts recording by itself, also with the screen off. When you switch off, the trip report is ready.</li>
+</ol>
+<p class="note">No adapter yet? The app has a demo mode with a simulated car.</p>
 
-<h2>Export and sharing</h2>
-<p>Only when you tap “Export” does the app copy your trip files to the Downloads/PriusMonitor folder on your phone. Only when you tap “Share” does Android's share menu open with the report text; you choose where it goes. The app itself never sends anything.</p>
-
-<h2>Permissions</h2>
+<h2>Read-only and private</h2>
 <ul>
-  <li><b>Bluetooth (nearby devices)</b>: to find and connect to your OBD2 adapter. Not used for location.</li>
-  <li><b>Notifications</b>: to show that a trip is being recorded and when a trip report is ready.</li>
-  <li><b>Foreground service (connected device)</b>: to keep recording while the screen is off during a drive.</li>
-  <li><b>Start at boot</b>: to keep watching for your paired adapter after a phone restart.</li>
+  <li>The app only reads. It cannot clear fault codes or write anything to the car.</li>
+  <li>No internet permission: your data stays on your phone. Export trips as CSV whenever you want.</li>
+  <li>No account, no ads, no tracking. See the <a href="privacy.html">privacy policy</a>.</li>
 </ul>
 
-<h2>Children</h2>
-<p>The app is not directed at children.</p>
+<h2>Supported cars</h2>
+<p>Toyota Prius 2nd generation (NHW20, 2004–2009). Other Toyota hybrids may follow. Needs a Bluetooth Low Energy OBD2 adapter; classic Bluetooth adapters do not work. Android 12 or newer. Available in 25 languages.</p>
 
-<h2>Trademarks</h2>
-<p>Toyota and Prius are trademarks of Toyota Motor Corporation. This app is independent and not affiliated with, endorsed or sponsored by Toyota.</p>
-
-<h2>Contact</h2>
-<p>Questions about this policy: <a href="mailto:darmielabs@gmail.com">darmielabs@gmail.com</a></p>
+<footer>
+  <span>Contact: <a href="mailto:darmielabs@gmail.com">darmielabs@gmail.com</a></span>
+  <a href="privacy.html">Privacy policy</a>
+  <span>Toyota and Prius are trademarks of Toyota Motor Corporation. This app is not affiliated with Toyota.</span>
+</footer>
+</div>
 </body>
 </html>
